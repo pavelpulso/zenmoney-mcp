@@ -108,7 +108,7 @@ func (s *Service) Add(ctx context.Context, in AddInput) (CategoryResult, error) 
 		Required:      in.Required,
 	}
 
-	pushResp, err := c.Push(ctx, buildPushRequest(s.runtime.CurrentServerTimestamp(), []models.Tag{newTag}))
+	pushResp, err := c.PushTags(ctx, buildPushRequest(s.runtime.CurrentServerTimestamp(), []models.Tag{newTag}))
 	if err != nil {
 		return CategoryResult{}, fmt.Errorf("create category: %w", err)
 	}

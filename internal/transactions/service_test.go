@@ -56,6 +56,10 @@ func (m *mockClient) SyncSince(context.Context, time.Time) (models.Response, err
 func (m *mockClient) Sync(context.Context, models.Request) (models.Response, error) {
 	return models.Response{}, nil
 }
+func (m *mockClient) PushTags(ctx context.Context, req models.Request) (models.Response, error) {
+	return m.Push(ctx, req)
+}
+
 func (m *mockClient) Push(ctx context.Context, req models.Request) (models.Response, error) {
 	if m.pushFn != nil {
 		return m.pushFn(ctx, req)
