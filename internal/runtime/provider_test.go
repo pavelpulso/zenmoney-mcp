@@ -26,6 +26,10 @@ func (stubClient) Sync(context.Context, models.Request) (models.Response, error)
 	return models.Response{}, nil
 }
 
+func (s stubClient) PushTags(ctx context.Context, req models.Request) (models.Response, error) {
+	return s.Push(ctx, req)
+}
+
 func (stubClient) Push(context.Context, models.Request) (models.Response, error) {
 	return models.Response{}, nil
 }

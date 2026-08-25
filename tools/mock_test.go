@@ -45,6 +45,10 @@ func (m *mockZenClient) Sync(ctx context.Context, req models.Request) (models.Re
 	return models.Response{ServerTimestamp: req.ServerTimestamp + 1000}, nil
 }
 
+func (m *mockZenClient) PushTags(ctx context.Context, req models.Request) (models.Response, error) {
+	return m.Push(ctx, req)
+}
+
 func (m *mockZenClient) Push(ctx context.Context, req models.Request) (models.Response, error) {
 	if m.pushFn != nil {
 		return m.pushFn(ctx, req)
